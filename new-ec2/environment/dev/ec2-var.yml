@@ -1,5 +1,3 @@
-Access Key ID: AKIAIX6IQMCKU4AZDCIA
-Secret Access Key: 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
 ec2_keypair: DevOps_test
 ec2_security_group: SG_test
 ec2_instance_type: t2.micro
