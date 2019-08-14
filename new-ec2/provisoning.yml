@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   connection: local
+   gather_facts: false
+   user: root
+   vars_files:
+     - "environment/dev/ec2-var.yml"
+   roles:
+    - { role: ec2-role }

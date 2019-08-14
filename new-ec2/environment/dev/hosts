@@ -1,0 +1,2 @@
+ec2.instances[0].private_ip
+[ec2-node]
