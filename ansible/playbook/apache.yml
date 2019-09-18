@@ -1,5 +1,0 @@
----
- - hosts: apache
-   become: yes
-   roles:
-     - apache
