@@ -1,0 +1,20 @@
+---
+  - name: Install a sudo package
+    yum:
+      name: sudo
+      state: present
+    tags: sudo_install
+
+  - name: Create a group 
+    group:
+      name: sudo_root
+      gid: 500
+      state: present
+    tags: sudo_group_creation
+
+  - name: copy the sudoers file
+    template:
+      src: 'sudoers.j2'
+      dest: '/etc/sudoers'
+      mode: 0440
+    tags: copy_sudoers_files

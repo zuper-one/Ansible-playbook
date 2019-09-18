@@ -1,0 +1,10 @@
+[suinstall]
+localhost ansible_connection=local
+
+[apache]
+localhost ansible_connection=local
+172.31.26.83
+172.31.27.97
+
+[docker]
+172.31.27.97

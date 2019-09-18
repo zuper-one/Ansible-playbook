@@ -59,6 +59,6 @@
         args:
           tags:
             Name: Web Server
-            Owner: Ravi Kumar
+            Owner: Saurabh Singhal
             PurPose: Testing EC2 Instance From Ansible
 

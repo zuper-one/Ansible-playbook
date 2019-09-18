@@ -1,0 +1,55 @@
+--- 
+- 
+  become: true
+  hosts: all
+  tasks: 
+    - 
+      apt: "name=aptitude state=latest update_cache=yes force_apt_get=yes"
+      name: "Install aptitude using apt"
+    - 
+      apt: "name={{ item }} state=latest update_cache=yes"
+      loop: 
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - python3-pip
+        - virtualenv
+        - python3-setuptools
+      name: "Install required system packages"
+    - 
+      apt_key: 
+        state: present
+        url: "https://download.docker.com/linux/ubuntu/gpg"
+      name: "Add Docker GPG apt Key"
+    - 
+      apt_repository: 
+        repo: "deb https://download.docker.com/linux/ubuntu bionic stable"
+        state: present
+      name: "Add Docker Repository"
+    - 
+      apt: "update_cache=yes name=docker-ce state=latest"
+      name: "Update apt and install docker-ce"
+    - 
+      name: "Install Docker Module for Python"
+      pip: 
+        name: docker
+    - 
+      docker_image: 
+        name: "{{ default_container_image }}"
+        source: pull
+      name: "Pull default Docker image"
+    - 
+      docker_container: 
+        command: "{{ default_container_command }}"
+        image: "{{ default_container_image }}"
+        name: "{{ default_container_name }}{{ item }}"
+        state: present
+      name: "Create default containers"
+      with_sequence: "count={{ create_containers }}"
+  vars: 
+    create_containers: 4
+    default_container_command: "sleep 1d"
+    default_container_image: ubuntu
+    default_container_name: docker
+

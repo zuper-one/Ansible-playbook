@@ -1,0 +1,17 @@
+---
+  - name: Install a apache package
+    apt:
+      name: apache2
+      state: present
+    tags: apache_install
+    notify:
+      - restart httpd
+
+
+#  - name: copy the apache file
+#    template:
+#      src: 'conf/httpd.conf.j2'
+#      dest: '/etc/apache/conf/httpd.conf'
+#    tags: copy_sudoers_files
+#    notify:
+#      - restart httpd

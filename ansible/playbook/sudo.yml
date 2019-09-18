@@ -1,0 +1,5 @@
+---
+ - hosts: suinstall
+   become: yes
+   roles:
+     - sudo

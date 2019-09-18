@@ -1,0 +1,2 @@
+[apache]
+172.31.24.9 ansible_connection=local
