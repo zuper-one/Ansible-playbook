@@ -33,14 +33,7 @@
                 insertafter=EOF
                 line="[ec2-node]"
   with_items: ec2.instances  
-   
-- name: Add the newly created EC2 instance(s) to Ansible Host file
-  local_action: lineinfile
-                dest="environment/dev/hosts"
-                insertafter="[ec2-node]"
-                line={{ item.private_ip }}
-  with_items: ec2.instances
-   
+       
 - name: Make config file reable
   local_action: command chmod 400 ~/.ssh
   with_items: ec2.instances
