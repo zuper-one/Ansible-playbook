@@ -8,5 +8,6 @@ localhost ansible_connection=local
 #172.31.8.74
 
 [docker]
+localhost ansible_connection=local
 #172.31.27.97
 #172.31.26.83
